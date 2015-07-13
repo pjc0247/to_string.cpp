@@ -24,7 +24,7 @@ f.v = 14;
 std::cout<< to_string(f) <<std::endl; // Foo(v : 14)
 ```
 
-Usage (for PODs)
+Usage (for default types)
 ----
 ```c++
 int a = 1;
