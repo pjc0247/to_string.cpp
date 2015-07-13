@@ -31,3 +31,10 @@ int a = 1;
 
 std::cout<< to_string(a) <<std::endl;
 ```
+
+is_string_convertible
+----
+```c++
+cout<< is_string_convertible<Foo>::value; // true
+cout<< is_string_convertible<Bar>::value; // false
+```
