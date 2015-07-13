@@ -11,7 +11,7 @@ struct get_to_string_ret_type<T, true>{
 	enum{value = std::is_same<std::string,  decltype(((T*)nullptr)->to_string()) >::value};
 };
 
-class pod_defaults{
+class defaults{
 public:
 
 	template <typename T>
@@ -38,11 +38,11 @@ public:
 };
 
 template <typename T> 
-struct pod_convertible{
+struct is_default_convertible{
 	typedef char yes;
     typedef long no;
 
-    template <typename C> static yes test( decltype(&pod_defaults::cvt<C>::to_string) ) ;
+    template <typename C> static yes test( decltype(&defaults::cvt<C>::to_string) ) ;
     template <typename C> static no test(...);
 
 public:
@@ -66,7 +66,7 @@ public:
 
 template <typename T>
 struct is_string_convertible {
-	enum{value = has_to_string<T>::value || pod_convertible<T>::value};
+    enum{value = has_to_string<T>::value || default_convertible<T>::value};
 };
 
 
@@ -78,13 +78,13 @@ to_string(T o){
 }
 
 template <typename T>
-typename std::enable_if<(!has_to_string<T>::value) && pod_convertible<T>::value, std::string>::type
+typename std::enable_if<(!has_to_string<T>::value) && default_convertible<T>::value, std::string>::type
 to_string(T o){
 	return pod_defaults::cvt<T>::to_string(o);
 }
 
 template <typename T>
-typename std::enable_if<(!has_to_string<T>::value) && (!pod_convertible<T>::value), std::string>::type
+typename std::enable_if<(!has_to_string<T>::value) && (!default_convertible<T>::value), std::string>::type
 to_string(T o){
 	char tmp[128];
 	sprintf_s(tmp, "#<%s %p>", typeid(T).name(), &o);
