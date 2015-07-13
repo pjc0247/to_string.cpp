@@ -12,7 +12,7 @@ public:
   int v;
   
   std::string to_string(){
-    return "Foo (v : " + to_string(v) + ")";
+    return "Foo (v : " + ::to_string(v) + ")";
   }
 };
 ```
