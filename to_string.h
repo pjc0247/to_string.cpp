@@ -22,13 +22,17 @@ public:
 	template <>
 	struct cvt<int>{
 		static std::string to_string(int n){
-			return "int";
+			char b[32];
+			sprintf_s(b, "%d", n);
+			return b;
 		}
 	};
 	template <>
 	struct cvt<float>{
 		static std::string to_string(int n){
-			return "float";
+			char b[32];
+			sprintf_s(b, "%f", n);
+			return b;
 		}
 	};
 };
