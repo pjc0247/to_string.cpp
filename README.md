@@ -24,7 +24,7 @@ f.v = 14;
 std::cout<< to_string(f) <<std::endl; // Foo(v : 14)
 ```
 
-Usage (for default types)
+Usage (for Fundamental types)
 ----
 ```c++
 int a = 1;
