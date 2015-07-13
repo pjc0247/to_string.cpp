@@ -2,15 +2,6 @@
 
 #include <string>
 
-template <typename T, bool A> 
-struct get_to_string_ret_type{
-	enum{value = false};
-};
-template <typename T> 
-struct get_to_string_ret_type<T, true>{
-	enum{value = std::is_same<std::string,  decltype(((T*)nullptr)->to_string()) >::value};
-};
-
 class defaults{
 public:
 
@@ -49,6 +40,14 @@ public:
 	enum{value = sizeof(test<T>(0)) == sizeof(yes)};
 };
 
+template <typename T, bool A> 
+struct get_to_string_ret_type{
+	enum{value = false};
+};
+template <typename T> 
+struct get_to_string_ret_type<T, true>{
+	enum{value = std::is_same<std::string,  decltype(((T*)nullptr)->to_string()) >::value};
+};
 
 template <typename T>
 struct has_to_string{
