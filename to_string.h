@@ -59,6 +59,8 @@ public:
     template <typename C> static no test(...);
 
 public:
+   /* to_string 메소드가 있는지 검사한다 ->
+    * to_string 메소드 리턴형이 std::string인지 검사한다. */
     enum{value = get_to_string_ret_type<Hello, sizeof(test<T>(0)) == sizeof(yes) >::value};
 };
 
@@ -70,18 +72,21 @@ struct is_string_convertible {
 
 
 
+/* to_string메소드가 있는 경우 */
 template <typename T>
 typename std::enable_if<has_to_string<T>::value, std::string>::type
 to_string(T o){
 	return o.to_string();
 }
 
+/* to_string이 없지만, 기본형 타입 변환이 가능한 경우 */
 template <typename T>
 typename std::enable_if<(!has_to_string<T>::value) && default_convertible<T>::value, std::string>::type
 to_string(T o){
 	return defaults::cvt<T>::to_string(o);
 }
 
+/* to_string이 없고, 기본형 타입도 아닌 경우 */
 template <typename T>
 typename std::enable_if<(!has_to_string<T>::value) && (!default_convertible<T>::value), std::string>::type
 to_string(T o){
