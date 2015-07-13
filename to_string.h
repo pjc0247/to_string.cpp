@@ -80,7 +80,7 @@ to_string(T o){
 template <typename T>
 typename std::enable_if<(!has_to_string<T>::value) && default_convertible<T>::value, std::string>::type
 to_string(T o){
-	return pod_defaults::cvt<T>::to_string(o);
+	return defaults::cvt<T>::to_string(o);
 }
 
 template <typename T>
