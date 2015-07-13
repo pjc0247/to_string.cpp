@@ -4,6 +4,8 @@ to_string.cpp
 cpp is trash
 
 
+Usage (for Custom Classes)
+----
 ```c++
 class Foo{
 public:
@@ -20,5 +22,12 @@ Foo f;
 f.v = 14;
 
 std::cout<< to_string(f) <<std::endl; // Foo(v : 14)
+```
 
+Usage (for PODs)
+----
+```c++
+int a = 1;
+
+std::cout<< to_string(a) <<std::endl;
 ```
