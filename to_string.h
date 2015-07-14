@@ -86,20 +86,20 @@ public:
     }
   };
 
-#define _FUNDAMENTAL_CVT(type, fmt) \
-  template <> \
-  struct cvt<type>{ \
-    static std::string to_string(type n){ \
-      char b[32]; \
-      sprintf_s(b, fmt, n); \
-      return b; \
-    } \
-  };
+#define _FUNDAMENTAL_CVT(type) \
+	template <> \
+	struct cvt<type>{ \
+		static std::string to_string(type n){ \
+			std::ostringstream s; \
+			s<< n; \
+			return s.str(); \
+		} \
+	};
 
-  _FUNDAMENTAL_CVT(int, "%d")
-  _FUNDAMENTAL_CVT(char, "%c")
-  _FUNDAMENTAL_CVT(float, "%f")
-  _FUNDAMENTAL_CVT(long, "%l")
+	_FUNDAMENTAL_CVT(int)
+	_FUNDAMENTAL_CVT(char)
+	_FUNDAMENTAL_CVT(float)
+	_FUNDAMENTAL_CVT(long)
 };
 
 template <typename T> 
