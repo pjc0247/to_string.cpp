@@ -186,9 +186,21 @@ to_string(std::initializer_list<T> o){
 /* to_string이 없고, 기본형 타입도 아닌 경우 */
 template <typename T>
 typename std::enable_if<(!has_to_string<T>::value) &&
-  (!default_convertible<T>::value), std::string>::type
+	(!default_convertible<T>::value) &&
+	(!std::is_pointer<T>::value), std::string>::type
 to_string(T o){
-  char tmp[512];
-  sprintf_s(tmp, "#<%s %p>", typeid(T).name(), &o);
-  return tmp;
+	char tmp[512];
+	sprintf_s(tmp, "#<%s %p>", typeid(T).name(), &o);
+	return tmp;
+}
+
+/* 포인터 타입인 경우 */
+template <typename T>
+typename std::enable_if<(!has_to_string<T>::value) &&
+	(!default_convertible<T>::value) &&
+	std::is_pointer<T>::value, std::string>::type
+to_string(T o){
+	char tmp[512];
+	sprintf_s(tmp, "#<%s %p>", typeid(T).name(), o);
+	return tmp;
 }
