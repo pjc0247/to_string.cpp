@@ -10,7 +10,7 @@ to.cpp
   
 * __to::_string__
 
-  Fundamental types
+  __Fundamental types__
   ```c++
   int v = 1234;
   std::cout<< to::_string(v); // 1234
@@ -22,7 +22,7 @@ to.cpp
   bool b = true;
   std::cout<< to::_string(b); // true
   ```
-  STL Containers
+  __STL Containers__
   ```c++
   std::vector<int> v({1,2,3,4});
   std::cout<< to::_string(v); // [1, 2, 3, 4]
@@ -43,7 +43,7 @@ to.cpp
   std::cout<< to::_string({1,2,3,4}); // [1, 2, 3, 4]
   std::cout<< to::_string({{1,2}, {3,4}}); // not implemented yet
   ```
-  Custom Classes
+  __Custom Classes__
   ```c++
   class Foo{
   public:
