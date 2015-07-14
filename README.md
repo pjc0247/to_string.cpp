@@ -6,7 +6,7 @@ cpp is trash
 
 Usage
 ----
-* for Custom Classes
+* __for Custom Classes__
 ```c++
 class Foo{
 public:
@@ -25,14 +25,14 @@ f.v = 14;
 std::cout<< to_string(f) <<std::endl; // Foo(v : 14)
 ```
 
-* for Fundamental types
+* __for Fundamental types__
 ```c++
 int a = 1;
 
 std::cout<< to_string(a) <<std::endl;
 ```
 
-* for STL containers
+* __for STL containers__
 ```c++
 std::vector<int> v({1,2,3,4});
 
@@ -49,7 +49,7 @@ std::map<std::string, std::vector<std::string>> m2({
 std::cout<< to_string(m2); // {fruits : [apple, banana, orange], colors : [yellow, red, blue]}
 ```
 
-* for initializer-lists
+* __for initializer-lists__
 ```c++
 std::cout<< to_string({1,2,3,4});
 
