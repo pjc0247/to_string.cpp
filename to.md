@@ -1,14 +1,16 @@
 to.cpp
 ====
 
-* __to::types__
+to::types
+----
 
   ```c++
   std::cout<< to::_int("4132"); // 4132
   std::cout<< to::_unsigned_int("9999999999999999999999999999"); // out_of_range exception
   ```
   
-* __to::_string__
+to::_string
+----
 
   __Fundamental types__
   ```c++
