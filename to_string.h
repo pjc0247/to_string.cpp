@@ -87,19 +87,34 @@ public:
   };
 
 #define _FUNDAMENTAL_CVT(type) \
-	template <> \
-	struct cvt<type>{ \
-		static std::string to_string(type n){ \
-			std::ostringstream s; \
-			s<< n; \
-			return s.str(); \
-		} \
-	};
+  template <> \
+  struct cvt<type>{ \
+    static std::string to_string(type n){ \
+      std::ostringstream s; \
+      s<< n; \
+      return s.str(); \
+    } \
+  };
 
-	_FUNDAMENTAL_CVT(int)
-	_FUNDAMENTAL_CVT(char)
-	_FUNDAMENTAL_CVT(float)
-	_FUNDAMENTAL_CVT(long)
+  _FUNDAMENTAL_CVT(char)
+  _FUNDAMENTAL_CVT(unsigned char)
+  _FUNDAMENTAL_CVT(short)
+  _FUNDAMENTAL_CVT(unsigned short)
+  _FUNDAMENTAL_CVT(int)
+  _FUNDAMENTAL_CVT(unsigned int)
+  _FUNDAMENTAL_CVT(long)
+  _FUNDAMENTAL_CVT(unsigned long)
+  _FUNDAMENTAL_CVT(long long)
+  _FUNDAMENTAL_CVT(unsigned long long)
+  _FUNDAMENTAL_CVT(float)
+  _FUNDAMENTAL_CVT(double)
+
+  template <>
+  struct cvt<bool>{
+    static std::string to_string(bool n){
+      return n ? "true" : "false";
+    }
+  };
 };
 
 template <typename T> 
