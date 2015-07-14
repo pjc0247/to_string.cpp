@@ -1,13 +1,17 @@
 to.cpp
 ====
 
-to::types
+to::_types
 ----
-
   ```c++
   std::cout<< to::_int("4132"); // 4132
   std::cout<< to::_unsigned_int("9999999999999999999999999999"); // out_of_range exception
   ```
+  
+  * Supported Types
+    * int
+    * 
+  
   
 to::_string
 ----
@@ -64,4 +68,11 @@ to::_string
   ```c++
   Bar b;
   std::cout<< to::_string(b); // #<Bar 00001234>
+  ```
+  __is_string_convertible__
+  ```c++
+  std::cout<< to::is_string_convertible<int>::value; // true
+  
+  std::cout<< to::is_string_convertible<Foo>::value; // true
+  std::cout<< to::is_string_convertible<Bar>::value; // false
   ```
